@@ -44,7 +44,7 @@ class Controller
 	 * 
 	 * Tetorna o objeto view
 	 */
-	public function getView()
+	protected function getView()
 	{
 		return $this->view;
 	}

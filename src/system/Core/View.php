@@ -82,12 +82,6 @@ class View
 	 */
 	public function getData()
 	{
-		if (count($this->data) == 0) {
-			throw new \Exception('Vetor data está vazio.');
-
-			return array();
-		}
-
 		return $this->data;
 	}
 

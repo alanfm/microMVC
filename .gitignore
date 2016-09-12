@@ -1,2 +1,4 @@
 vender/
 .phpintel/
+
+composer.lock
