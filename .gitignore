@@ -1,4 +1,5 @@
-vender/
+vendor/
 .phpintel/
 
 composer.lock
+.gitignore
