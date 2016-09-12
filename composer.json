@@ -1,0 +1,25 @@
+{
+    "name": "alanfm/microasterisco",
+    "discription": "Projeto de um microframework desenvolvido para o aprendizado da linguagem PHP e alguns padrões de projeto",
+    "keywords": ["microframework"],
+
+    "authors": [
+        {
+            "name": "Alan Freire",
+            "email": "alan_freire@msn.com",
+            "role": "Developer"
+        }
+    ],
+
+    "require":{
+        "php": ">=5.6.16",
+        "ezimuel/php-secure-session": "dev-master"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/app",
+            "System\\": "src/system"
+        }
+    }
+}
