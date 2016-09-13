@@ -1,4 +1,4 @@
-# Apache (.htaccess or httpd.conf)
+ModPagespeed off
 RewriteEngine On
 RewriteCond $1 !^(index\.php|images|assets|robots\.txt)
 RewriteRule ^(.*)$ index.php?uri=$1 [NC,L]

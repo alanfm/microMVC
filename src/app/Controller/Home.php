@@ -43,7 +43,7 @@ final class Home extends Controller
 		 * 
 		 * Na linha parent::index() é impresso a página na tela do usuário
 		 */
-		$this->getView()->setTemplate('home/index')->setData(array('title'=>'Página Inicial'));
+		$this->getView()->setTemplate('home/index')->setData(array('title'=>'microMVC'));
 		parent::index();
 	}
 }
