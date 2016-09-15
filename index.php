@@ -19,7 +19,7 @@ include_once __DIR__ . '/src/app/config.php';
 
 
 try {
-	\System\Core\App::run(filter_input(INPUT_GET, 'uri', FILTER_SANITIZE_STRING));
+    \System\Core\App::run(filter_input(INPUT_GET, 'uri', FILTER_SANITIZE_STRING));
 } catch (Exception $e) {
-	echo $e->getMessage();
+    echo $e->getMessage();
 }

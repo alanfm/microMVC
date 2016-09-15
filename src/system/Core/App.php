@@ -14,21 +14,21 @@ class App
      * 
      * Recebe o nome da classe
      */
-	private static $class = null;
+    private static $class = null;
 
     /**
      * @var string
      * 
      * Recebe o nome do método
      */
-	private static $method = null;
+    private static $method = null;
 
     /**
      * @var array
      * 
      * Recebe uma coleção de parametros
      */
-	private static $param = array();
+    private static $param = array();
 
     /**
      * Method run
@@ -38,7 +38,7 @@ class App
      * 
      * @param string
      */
-	public static function run($uri)
+    public static function run($uri)
     {
         self::parseUri($uri);
 
@@ -79,25 +79,25 @@ class App
      * 
      * @param string
      */
-	private static function parseUri($uri)
-	{
-		if (!is_string($uri)) {
-			throw new \Exception('URI inválido.');
+    private static function parseUri($uri)
+    {
+        if (!is_string($uri)) {
+            throw new \Exception('URI inválido.');
 
-			return;
-		}
+            return;
+        }
 
-		$uri = explode('/', $uri);
+        $uri = explode('/', $uri);
 
         if ($uri[0] == '') {
             self::$class = null;
             return;
         }
 
-		self::$class = count($uri)? self::parseString(array_shift($uri), 'class'): null;
-		self::$method = count($uri)? self::parseString(array_shift($uri), 'method'): null;
-		self::$param = count($uri)? $uri: array();
-	}
+        self::$class = count($uri)? self::parseString(array_shift($uri), 'class'): null;
+        self::$method = count($uri)? self::parseString(array_shift($uri), 'method'): null;
+        self::$param = count($uri)? $uri: array();
+    }
 
     /**
      * Method parseString
@@ -109,26 +109,26 @@ class App
      * @param string
      * @return string
      */
-	private static function parseString($string, $format = null)
-	{
-		if (!is_string($string)) {
-			throw new \Exception('Parametro inválido.');
+    private static function parseString($string, $format = null)
+    {
+        if (!is_string($string)) {
+            throw new \Exception('Parametro inválido.');
 
-			return;
-		}
+            return;
+        }
 
-		$string = preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $string));
+        $string = preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $string));
 
-		switch ($format) {
-			case 'class':
-				$string = ucfirst(strtolower($string));
-				break;
+        switch ($format) {
+            case 'class':
+                $string = ucfirst(strtolower($string));
+                break;
 
-			case 'method':
-				$string = strtolower($string);
-				break;
-		}
+            case 'method':
+                $string = strtolower($string);
+                break;
+        }
 
-		return $string;
-	}
+        return $string;
+    }
 }

@@ -18,116 +18,116 @@ namespace System\Core;
 
 class View
 {
-	/**
-	 * @var string
-	 * 
-	 * Recebe o caminho do arquivo do template
-	 */
-	private $template;
+    /**
+     * @var string
+     * 
+     * Recebe o caminho do arquivo do template
+     */
+    private $template;
 
-	/**
-	 * @var array
-	 * 
-	 * Variáveis que pode ser visualizadas no template
-	 */
+    /**
+     * @var array
+     * 
+     * Variáveis que pode ser visualizadas no template
+     */
 
-	private $data;
+    private $data;
 
-	/**
-	 * Method getTemplate
-	 * 
-	 * Retorna o nome do template
-	 * 
-	 * @return string
-	 */
-	public function getTemplate()
-	{
-		if (empty($this->template)) {
-			throw new \Exception('Não foi definido o nome do template.');
+    /**
+     * Method getTemplate
+     * 
+     * Retorna o nome do template
+     * 
+     * @return string
+     */
+    public function getTemplate()
+    {
+        if (empty($this->template)) {
+            throw new \Exception('Não foi definido o nome do template.');
 
-			return;
-		}
+            return;
+        }
 
-		return $this->template;
-	}
+        return $this->template;
+    }
 
-	/**
-	 * Method setTemplate
-	 * 
-	 * Atribui um valor para o nome do template
-	 * 
-	 * @param string
-	 * @return object
-	 */
-	public function setTemplate($template)
-	{
-		if (!is_string($template)) {
-			throw new \Exception('Nome do template inserido é inválido.');
+    /**
+     * Method setTemplate
+     * 
+     * Atribui um valor para o nome do template
+     * 
+     * @param string
+     * @return object
+     */
+    public function setTemplate($template)
+    {
+        if (!is_string($template)) {
+            throw new \Exception('Nome do template inserido é inválido.');
 
-			return;
-		}
+            return;
+        }
 
-		$this->template = VIEW_DIR . $template . '.php';
+        $this->template = VIEW_DIR . $template . '.php';
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Method getData
-	 * 
-	 * Retorna o vetor com os valores que
-	 * poderam ser visualizados pelo template
-	 * 
-	 * @return array
-	 */
-	public function getData()
-	{
-		return $this->data;
-	}
+    /**
+     * Method getData
+     * 
+     * Retorna o vetor com os valores que
+     * poderam ser visualizados pelo template
+     * 
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 
-	/**
-	 * Method setData
-	 * 
-	 * Atribui um valor para o vetor de variáveis
-	 * que podem ser usadas no template
-	 * 
-	 * @param array
-	 * @return object
-	 */
-	public function setData($data)
-	{
-		if (!is_array($data)) {
-			throw new \Exception('O valor passado é inválido.');
+    /**
+     * Method setData
+     * 
+     * Atribui um valor para o vetor de variáveis
+     * que podem ser usadas no template
+     * 
+     * @param array
+     * @return object
+     */
+    public function setData($data)
+    {
+        if (!is_array($data)) {
+            throw new \Exception('O valor passado é inválido.');
 
-			return;
-		}
+            return;
+        }
 
-		$this->data = $data;
+        $this->data = $data;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Method show
-	 * 
-	 * Imprime o template na tela
-	 * 
-	 * @return object
-	 */
-	public function show()
-	{
-		if (file_exists($this->getTemplate())) {
-			if (count($this->getData()) > 0) {
-				foreach ($this->getData() as $k => $v) {
-					$$k = $v;
-				}
-			}
-			include_once $this->getTemplate();
-		} else {
-			throw new \Exception('O arquivo do template não existe.');
-			return;
-		}
+    /**
+     * Method show
+     * 
+     * Imprime o template na tela
+     * 
+     * @return object
+     */
+    public function show()
+    {
+        if (file_exists($this->getTemplate())) {
+            if (count($this->getData()) > 0) {
+                foreach ($this->getData() as $k => $v) {
+                    $$k = $v;
+                }
+            }
+            include_once $this->getTemplate();
+        } else {
+            throw new \Exception('O arquivo do template não existe.');
+            return;
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 }

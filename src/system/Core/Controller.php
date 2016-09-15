@@ -15,50 +15,50 @@ use \System\Core\View as View;
 
 class Controller
 {
-	/**
-	 * @var object
-	 * 
-	 * recebe o um objeto model
-	 */
-	private $model;
+    /**
+     * @var object
+     * 
+     * recebe o um objeto model
+     */
+    private $model;
 
-	/**
-	 * @var object
-	 * 
-	 * recebe um objeto view
-	 */
-	private $view;
+    /**
+     * @var object
+     * 
+     * recebe um objeto view
+     */
+    private $view;
 
-	/**
-	 * Method __construct
-	 * 
-	 * Define as configurações do controller
-	 */
-	public function __construct()
-	{
-		$this->view = new View();
-	}
+    /**
+     * Method __construct
+     * 
+     * Define as configurações do controller
+     */
+    public function __construct()
+    {
+        $this->view = new View();
+    }
 
-	/**
-	 * Method getView
-	 * 
-	 * Tetorna o objeto view
-	 */
-	protected function getView()
-	{
-		return $this->view;
-	}
+    /**
+     * Method getView
+     * 
+     * Tetorna o objeto view
+     */
+    protected function getView()
+    {
+        return $this->view;
+    }
 
-	/**
-	 * Method index
-	 * 
-	 * Metodo padrão para impressão do template na tela
-	 * @return object
-	 */
-	public function index()
-	{
-		$this->getView()->show();
+    /**
+     * Method index
+     * 
+     * Metodo padrão para impressão do template na tela
+     * @return object
+     */
+    public function index()
+    {
+        $this->getView()->show();
 
-		return $this;
-	}
+        return $this;
+    }
 }
