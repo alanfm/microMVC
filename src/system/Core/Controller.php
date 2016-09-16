@@ -31,6 +31,7 @@ class Controller
 
     /**
      * Method __construct
+     * @access public
      * 
      * Define as configurações do controller
      */
@@ -41,6 +42,7 @@ class Controller
 
     /**
      * Method getView
+     * @access protected
      * 
      * Tetorna o objeto view
      */
@@ -51,8 +53,10 @@ class Controller
 
     /**
      * Method index
+     * @access public
      * 
      * Metodo padrão para impressão do template na tela
+     * 
      * @return object
      */
     public function index()
@@ -60,5 +64,20 @@ class Controller
         $this->getView()->show();
 
         return $this;
+    }
+
+    /**
+     * Method outputJSON
+     * @access public
+     * 
+     * Recebe um array como parametro e imprime
+     * na tela os dados no formato JSON
+     * 
+     * @param array
+     */
+    public function outputJSON(array $data)
+    {
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 }

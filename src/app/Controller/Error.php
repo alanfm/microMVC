@@ -2,14 +2,13 @@
 
 namespace App\Controller;
 
-class Error
-{
-    public function __construct()
-    {
+use \System\Core\Controller as Controller;
 
-    }
-    public function index($param = null)
+class Error extends Controller
+{
+    public function index()
     {
-        print('Página não encontrada!');
+        $this->getView()->setTemplate('error/index');
+        parent::index();
     }
 }

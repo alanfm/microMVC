@@ -26,7 +26,27 @@ use \System\Core\Controller as Controller;
 final class Home extends Controller
 {
     /**
+     * Method __construct
+     * @access public
+     * 
+     * Método contrutor da classe de controle home
+     * 
+     * Caso o método de construtor das classes de controle sejam
+     * implementados, deve-se adicionar a execução do método
+     * construtor da classe pai.
+     */
+    public function __construct()
+    {
+        /**
+         * O método construtor da classe pai deve ser arbitrariamente 
+         * chamado.
+         */
+        parent::__construct();
+    }
+
+    /**
      * Method index
+     * @access public
      * 
      * Método que será executado como padrão da aplicação
      */
@@ -41,7 +61,7 @@ final class Home extends Controller
          * onde "home" é diretorio dentro do diretorio "View" e index é o arquivo sem a extenção ".php".
          * Depois é setado um vetor, onde a chave é o nome da variável que será acessado no arquivo
          * 
-         * Na linha parent::index() é impresso a página na tela do usuário
+         * Na linha parent::index() é impresso a página na tela do usuário.
          */
         $this->getView()->setTemplate('home/index')->setData(array('title'=>'microMVC'));
         parent::index();
