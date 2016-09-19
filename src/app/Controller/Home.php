@@ -66,4 +66,23 @@ final class Home extends Controller
         $this->getView()->setTemplate('home/index')->setData(array('title'=>'microMVC'));
         parent::index();
     }
+
+    public function teste()
+    {
+        try {
+            $sql = new \System\Core\SQL();
+
+            echo $sql->select('tabela', ['a','b','c'])
+                     ->where(['c'=>['%d%', 'like'], 'd'=>2], 'OR')
+                     ->where(['a'=>'micro', 'b'=>'frame', 'e'=>'work'])
+                     ->where(['c'=>['%d%', 'like'], 'd'=>2])->get(), '<br>';
+            echo $sql->select('table')
+                     ->where(['c'=>['%d%', '!=']], 'OR')
+                     ->orderBy('z', 'asc')
+                     ->limit(5)
+                     ->get(), '<br>';
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }

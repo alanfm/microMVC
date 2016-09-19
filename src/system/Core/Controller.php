@@ -77,7 +77,15 @@ class Controller
      */
     public function outputJSON(array $data)
     {
+        if (!is_array($data)) {
+            throw new \Exception("Parametro inválido. Atribua um vetor como parametro.", 1);
+
+            return;            
+        }
+
         header('Content-Type: application/json');
         echo json_encode($data);
+
+        return $this;
     }
 }
