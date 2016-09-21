@@ -116,17 +116,19 @@ class View
      */
     public function show()
     {
-        if (file_exists($this->getTemplate())) {
-            if (count($this->getData()) > 0) {
-                foreach ($this->getData() as $k => $v) {
-                    $$k = $v;
-                }
-            }
-            include_once $this->getTemplate();
-        } else {
+        if (!file_exists($this->getTemplate())) {
             throw new \Exception('O arquivo do template não existe.');
-            return;
+
+            return;            
         }
+
+        if (count($this->getData()) > 0) {
+            foreach ($this->getData() as $k => $v) {
+                $$k = $v;
+            }
+        }
+        
+        include_once $this->getTemplate();
 
         return $this;
     }

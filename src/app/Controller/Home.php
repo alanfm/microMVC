@@ -21,7 +21,7 @@ use \System\Core\Controller as Controller;
  * 
  * @author Alan Freire - Desenvolvedor - alan_freire@msn.com
  * @version 1.0
- * @copyright GPL 2016
+ * @copyright MIT © 2016
  */
 final class Home extends Controller
 {

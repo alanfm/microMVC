@@ -45,30 +45,39 @@ class App
         if (self::$class == null) {
             $obj = new \App\Controller\Home();
             $obj->index();
+
             return;
         }
 
-        if (file_exists(CONTROLLER_DIR . self::$class . '.php') && self::$class !== 'Error') {
-            $obj = new \ReflectionClass("\\App\\Controller\\" . self::$class);
+        if (!file_exists(CONTROLLER_DIR . self::$class . '.php') || self::$class === 'Error') {
+            $obj = new \App\Controller\Error();
+            $obj->index();
 
-            if (isset(self::$method)) {
-                if ($obj->hasMethod(self::$method)) {
-                    if (count(self::$param)) {
-                        $obj->getMethod(self::$method)->invoke($obj->newInstance(), self::$param);
-                        return;
-                    }
-
-                    $obj->getMethod(self::$method)->invoke($obj->newInstance());
-                    return;
-                }
-            }
-
-            $obj->getMethod('index')->invoke($obj->newInstance());                
             return;
         }
 
-        $obj = new \App\Controller\Error();
-        $obj->index();
+        $obj = new \ReflectionClass("\\App\\Controller\\" . self::$class);
+
+        if (!isset(self::$method) || self::$method === '') {
+            $obj->getMethod('index')->invoke($obj->newInstance());
+
+            return;
+        }
+
+        if (!$obj->hasMethod(self::$method)) {
+            $obj = new \App\Controller\Error();
+            $obj->index();
+
+            return;            
+        }
+
+        if (count(self::$param)) {
+            $obj->getMethod(self::$method)->invoke($obj->newInstance(), self::$param);
+            return;
+        }
+
+        $obj->getMethod(self::$method)->invoke($obj->newInstance());
+        return;
     }
 
     /**
