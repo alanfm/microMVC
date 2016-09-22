@@ -16,10 +16,15 @@
         "ezimuel/php-secure-session": "dev-master"
     },
 
+    "require-dev": {
+        "phpunit:phpunit": "*"
+    },
+
     "autoload": {
         "psr-4": {
             "App\\": "src/app",
-            "System\\": "src/system"
+            "System\\": "src/system",
+            "Tests\\": "tests"
         }
     }
 }
