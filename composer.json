@@ -17,7 +17,7 @@
     },
 
     "require-dev": {
-        "phpunit:phpunit": "*"
+        "phpunit/phpunit": "*"
     },
 
     "autoload": {

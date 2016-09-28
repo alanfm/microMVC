@@ -96,12 +96,6 @@ class SQL
             return;
         }
 
-        if (!is_array($field)) {
-            throw new \Exception('Parametro campo inválido.');
-            
-            return;
-        }
-
         $this->string = sprintf('DELETE FROM %s', $table);
 
         return $this;
@@ -158,6 +152,12 @@ class SQL
             throw new \Exception('Parametro tabela inválido.');
 
             return;            
+        }
+
+        if (!is_array($fields)) {
+            throw new \Exception('Parametro campos inválido.');
+
+            return;
         }
 
         $this->string = sprintf('SELECT %s FROM %s',
