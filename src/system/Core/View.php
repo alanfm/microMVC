@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @package System\Core
+ * @package System
+ * @subpackage Core
  * 
  * Pacate onde está a classe View
  */
