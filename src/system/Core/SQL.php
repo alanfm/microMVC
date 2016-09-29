@@ -66,7 +66,7 @@ class SQL
         }
 
         if (!is_string($table)) {
-            throw new \Exception("Parametro tabela inválido.");
+            throw new \Exception(sprintf("Parametro tabela(%s) inválido.", $table));
 
             return;
         }

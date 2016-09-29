@@ -5,7 +5,7 @@ namespace System;
 class System
 {
     /**
-     * Method correntUrl()
+     * Method correntUrl
      * @access public
      * 
      * Retorna a url da página atual

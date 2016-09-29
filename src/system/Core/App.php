@@ -7,7 +7,7 @@
  */
 namespace System\Core;
 
-class App
+final class App
 {
     /**
      * @var string

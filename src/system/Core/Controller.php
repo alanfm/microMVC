@@ -40,6 +40,13 @@ class Controller
         $this->view = new View();
     }
 
+    public function model($model)
+    {
+        $this->model = sprintf("\App\Model\%s", $model);
+
+        return new $this->model; 
+    }
+    
     /**
      * Method getView
      * @access protected

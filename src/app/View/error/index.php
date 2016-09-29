@@ -24,7 +24,8 @@
     <body>
         <div class="container">
             <header class="jumbotron">
-                <h1 class="text-center">Página não encontrada!</h1>
+                <h1 class="text-center"><?=$erro;?></h1>
+                <h2 class="text-center"><?=$message;?></h2>
             </header>
         </div>
         <div class="container">
