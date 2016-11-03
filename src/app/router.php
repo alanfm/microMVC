@@ -29,8 +29,15 @@ $router->get('/', function() {
 	$ctrl->index();
 });
 
-
+/**
+ * Pequeno exemplo de como funciona o sistema
+ * de rotas para esse micro framework
+ */
 $router->mount('/hello', function() use ($router) {
+	if (count($_SESSION['db']) == 0) {
+		$_SESSION['db'] = [];
+	}
+
 	$router->get('/(\d+)', function($id) {
 		if (count($_SESSION['db']) <= $id) {
 			echo 'Registro não encontrado!';
@@ -81,6 +88,10 @@ $router->mount('/hello', function() use ($router) {
 	$router->get('/', function() {
 		echo '<form action="/hello" method="post"><label>Nome: </label><input type="text" name="name"><input type="submit" value="Enviar"></form>';
 		echo "<table border=1><thead><tr><th>#id</th><th>Nome</th><th>Opções</th></tr></thead>";
+		
+		if (empty($_SESSION['db'])) {
+			return;
+		}
 
 		foreach($_SESSION['db'] as $key => $value) {
 			echo "<tr><td>", $key + 1, "</td><td>", $value, "</td><td><a href='/hello/edit/", $key + 1,"'>Editar</a> || <a href='/hello/delete/", $key + 1,"'>Apagar</a></td></tr>";
