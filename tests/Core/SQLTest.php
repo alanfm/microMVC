@@ -98,7 +98,7 @@ class SQLTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Teste do método selec sem a clausula where
+     * Teste do método select sem a clausula where
      * e sem passar o parametro campos
      */
     public function testSelectEmptyFields()
@@ -106,5 +106,16 @@ class SQLTest extends \PHPUnit_Framework_TestCase
         $this->sql->select('tabela');
 
         $this->assertEquals('SELECT * FROM tabela', $this->sql->get());
+    }
+
+    /**
+     * Teste do método select com a cláusula where
+     * na condição LIKE
+     */
+    public function testSelectLike()
+    {
+        $this->sql->select('tabela')->where(['name' => ['test', 'LIKE']]);
+
+        $this->assertEquals('SELECT * FROM tabela WHERE name LIKE ?', $this->sql->get());
     }
 }

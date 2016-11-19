@@ -51,12 +51,25 @@ final class Teste extends Controller
 
     public function select2InDB($id)
     {
-    	$rows = $this->model('Teste')->select(['*'], ['id'=>array_shift($id)])->save();
+    	$rows = $this->model('Teste')->select(['*'], ['id'=>$id])->save();
 
     	if (count($rows)) {
     		var_dump($rows);
     	} else {
     		echo 'Erro!';
     	}
+    }
+
+    public function select3InDB($field)
+    {
+        $field = filter_var($field, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        
+        $rows = $this->model('Teste')->select(['*'], ['name'=>["%$field%", 'LIKE']])->save();
+
+        if (count($rows)) {
+            var_dump($rows);
+        } else {
+            echo 'Erro!';
+        }
     }
 }

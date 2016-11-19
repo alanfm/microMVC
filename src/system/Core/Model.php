@@ -161,6 +161,11 @@ class Model
         if (!is_null($where)){
             $i = 1;
             foreach($where as $value) {
+                if (is_array($value)) {
+                    $this->stmt->bindValue($i++, $value[0], $this->type($value[0]));
+                    continue;
+                }
+
                 $this->stmt->bindValue($i++, $value, $this->type($value));
             }
         }

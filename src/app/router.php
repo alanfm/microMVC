@@ -33,6 +33,15 @@ $router->get('/', function() {
  * Pequeno exemplo de como funciona o sistema
  * de rotas para esse micro framework
  */
+$router->mount('/teste', function() use ($router) {
+	$ctrl = new \App\Controller\Teste();
+
+	$router->get('/select3', function() use ($ctrl) {
+		$ctrl->select3InDB('y');
+	});
+});
+
+/**
 $router->mount('/hello', function() use ($router) {
 	if (count($_SESSION['db']) == 0) {
 		$_SESSION['db'] = [];
@@ -100,7 +109,7 @@ $router->mount('/hello', function() use ($router) {
 	    echo "</table>";
 	});
 });
-
+*/
 /**
  * Executa as rotas
  */
