@@ -51,10 +51,24 @@ class Controller
      * Method getView
      * @access protected
      * 
-     * Tetorna o objeto view
+     * Recebe o endereço do arquivo de view e
+     * retorna o objeto view
+     * 
+     * @param string
+     * @param array
+     * 
+     * @return object
      */
-    protected function getView()
+    protected function view($template = null, array $data = [])
     {
+        if ($template) {
+            $this->view->setTemplate($template);
+        }
+
+        if (count($data)) {
+            $this->view->setData($data);
+        }
+
         return $this->view;
     }
 
@@ -68,7 +82,7 @@ class Controller
      */
     public function index()
     {
-        $this->getView()->show();
+        $this->view()->show();
 
         return $this;
     }
@@ -85,7 +99,7 @@ class Controller
     public function outputJSON(array $data)
     {
         if (!is_array($data)) {
-            throw new \Exception("Parametro inválido. Atribua um vetor como parametro.", 1);
+            throw new \Exception("Parametro inválido. Atribua um vetor como parametro.");
 
             return;            
         }
