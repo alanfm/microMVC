@@ -8,8 +8,7 @@ final class Teste extends Controller
 {
     public function index()
     {
-        $this->view('teste/index', ['data'=>'Página inicial de teste!', 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>'Página inicial de teste!', 'title'=>'Página de teste!'])->show();
     }
 
     public function insertInDB()
@@ -20,8 +19,7 @@ final class Teste extends Controller
             $data = 'Erro ao registrar os dados!';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 
     public function deleteInDB($id)
@@ -32,8 +30,7 @@ final class Teste extends Controller
             $data = 'Erro ao apagar osdados';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 
     public function updateInDB($id, $name = 'Teste', $last_name = 'Test')
@@ -44,8 +41,7 @@ final class Teste extends Controller
             $data = 'Erro ao alterar o registro';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 
     public function select1InDB()
@@ -61,8 +57,7 @@ final class Teste extends Controller
             $data = 'Erro ao fazer um select na tabela';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 
     public function select2InDB($id)
@@ -78,8 +73,7 @@ final class Teste extends Controller
             $data = 'Erro ao fazer um select na tabela';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 
     public function select3InDB($field)
@@ -97,7 +91,6 @@ final class Teste extends Controller
             $data = 'Erro ao fazer um select na tabela';
         }
 
-        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
-        parent::index();
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!'])->show();
     }
 }

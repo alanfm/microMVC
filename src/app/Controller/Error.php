@@ -35,9 +35,7 @@ class Error extends Controller
      */
 	public function error404()
 	{
-		$this->view('error/index', ['erro'=>404, 'message'=>'Página não encontrada!']);
-
-		parent::index();
+		$this->view('error/index', ['erro'=>404, 'message'=>'Página não encontrada!'])->show();
 	}
 
     /**
@@ -49,8 +47,7 @@ class Error extends Controller
 	{
 		$this->view()
 		     ->template('error/index')
-		     ->data(['erro'=>403, 'message'=>'Esta página não pode ser acessada!']);
-
-		parent::index();
+		     ->data(['erro'=>403, 'message'=>'Esta página não pode ser acessada!'])
+			 ->show();
 	}
 }

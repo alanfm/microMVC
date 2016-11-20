@@ -61,14 +61,13 @@ final class Home extends Controller
          * onde "home" é diretorio dentro do diretorio "View" e index é o arquivo sem a extenção ".php".
          * Depois é setado um vetor, onde a chave é o nome da variável que será acessado no arquivo
          * 
-         * Na linha parent::index() é impresso a página na tela do usuário.
+         * No método show imprime a página na tela do usuário.
          */
-        $this->view()->template('home/index')->data(array('title'=>'microMVC'));
+        $this->view()->template('home/index')->data(['title'=>'microMVC'])->show();
 
         /**
-         * Também é possivel fazer como na linha de código abaixo 
-         * $this->view('home/index', ['title'=>'microMVC']);
+         * Também é possível fazer a mesma coisa que na linha de código acima da seguinte forma
+         * $this->view('home/index', ['title'=>'microMVC'])->show();
          */
-        parent::index();
     }
 }

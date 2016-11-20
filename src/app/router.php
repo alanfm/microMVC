@@ -1,14 +1,11 @@
 <?php
 /**
  * Cria um alias para a classe Router
+ * e sua instância
+ * 
+ * @var object
  */
 use \Bramus\Router\Router as Router;
-
-/**
- * Instancia da classe Router
- *
- * @var Router
- */
 $router = new Router();
 
 /**

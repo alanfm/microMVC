@@ -73,14 +73,15 @@ class Controller
     }
 
     /**
-     * Method index
+     * Method show
      * @access public
      * 
      * Metodo padrão para impressão do template na tela
      * 
      * @return object
      */
-    public function index()
+
+    public function show()
     {
         $this->view()->show();
 
