@@ -62,11 +62,11 @@ class Controller
     protected function view($template = null, array $data = [])
     {
         if ($template) {
-            $this->view->setTemplate($template);
+            $this->view->template($template);
         }
 
         if (count($data)) {
-            $this->view->setData($data);
+            $this->view->data($data);
         }
 
         return $this->view;

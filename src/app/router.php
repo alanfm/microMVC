@@ -32,84 +32,42 @@ $router->get('/', function() {
 /**
  * Pequeno exemplo de como funciona o sistema
  * de rotas para esse micro framework
+ * 
+ * Para mais informações de como funciona o sistema de rotas
+ * acesse o github do desenvolvedor: https://github.com/bramus/router
  */
 $router->mount('/teste', function() use ($router) {
 	$ctrl = new \App\Controller\Teste();
 
-	$router->get('/select3', function() use ($ctrl) {
-		$ctrl->select3InDB('y');
+	$router->get('/', function() use ($ctrl) {
+		$ctrl->index();
 	});
+
+	$router->get('/insert', function() use ($ctrl) {
+		$ctrl->insertInDB('y');
+	});
+
+	$router->get('/delete/(\d+)', function($id) use ($ctrl) {
+		$ctrl->deleteInDB($id);
+	});
+
+	$router->get('/update/(\d+)', function($id) use ($ctrl) {
+		$ctrl->updateInDB($id);
+	});
+
+	$router->get('/select1', function() use ($ctrl) {
+		$ctrl->select1InDB();
+	});
+
+	$router->get('/select2/(\d+)', function($id) use ($ctrl) {
+		$ctrl->select2InDB($id);
+	});
+
+	$router->get('/select3/(\w+)', function($name) use ($ctrl) {
+		$ctrl->select3InDB($name);
+	});	
 });
 
-/**
-$router->mount('/hello', function() use ($router) {
-	if (count($_SESSION['db']) == 0) {
-		$_SESSION['db'] = [];
-	}
-
-	$router->get('/(\d+)', function($id) {
-		if (count($_SESSION['db']) <= $id) {
-			echo 'Registro não encontrado!';
-			exit;
-		}
-
-		echo 'Olá ', $_SESSION['db'][$id], '!';
-	});
-
-	$router->post('/', function() {
-		array_push($_SESSION['db'], filter_input(INPUT_POST, 'name'));
-
-		echo 'Olá ', $_SESSION['db'][count($_SESSION['db']) - 1], '<br> id: ', count($_SESSION['db']) - 1;
-		echo "<br>Nome cadastrado com sucesso!<br>";
-		echo '<br><a href="/hello">Voltar</a>';
-	});
-
-	$router->get('/edit/(\d+)', function($id) {
-		echo '<form action="/hello/edit" method="post"><label>Nome: </label><input type="text" name="name" value="',$_SESSION['db'][$id - 1],'""><input type="hidden" name="id" value="', $id-1,'"><input type="submit" value="Enviar"></form>';
-	});
-
-	$router->post('/edit', function() {
-		echo '<a href="/hello">voltar</a><br>';
-
-		if (count($_SESSION['db']) <= filter_input(INPUT_POST, 'id')) {
-			echo 'Registro não encontrado!';
-			exit;
-		}
-
-		$_SESSION['db'][filter_input(INPUT_POST, 'id')] = filter_input(INPUT_POST, 'name');
-		echo "<br>Registro alterado com sucesso!";
-	});
-
-	$router->get('/delete/(\d+)', function($id) {
-		echo "<a href='/hello'>Voltar</a><br><br>";
-		if (count($_SESSION['db']) < $id) {
-			echo "Registro não encontrado!";
-			exit;
-		}
-
-		unset($_SESSION['db'][$id - 1]);
-
-		sort($_SESSION['db']);
-
-		echo "Registro apagado com sucesso!";
-	});
-
-	$router->get('/', function() {
-		echo '<form action="/hello" method="post"><label>Nome: </label><input type="text" name="name"><input type="submit" value="Enviar"></form>';
-		echo "<table border=1><thead><tr><th>#id</th><th>Nome</th><th>Opções</th></tr></thead>";
-		
-		if (empty($_SESSION['db'])) {
-			return;
-		}
-
-		foreach($_SESSION['db'] as $key => $value) {
-			echo "<tr><td>", $key + 1, "</td><td>", $value, "</td><td><a href='/hello/edit/", $key + 1,"'>Editar</a> || <a href='/hello/delete/", $key + 1,"'>Apagar</a></td></tr>";
-		}
-
-	    echo "</table>";
-	});
-});
-*/
 /**
  * Executa as rotas
  */

@@ -41,7 +41,7 @@ class View
      * 
      * @return string
      */
-    public function getTemplate()
+    protected function getTemplate()
     {
         if (empty($this->template)) {
             throw new \Exception('Não foi definido o nome do template.');
@@ -60,7 +60,7 @@ class View
      * @param string
      * @return object
      */
-    public function setTemplate($template)
+    public function template($template)
     {
         if (!is_string($template)) {
             throw new \Exception('Nome do template inserido é inválido.');
@@ -81,7 +81,7 @@ class View
      * 
      * @return array
      */
-    public function getData()
+    protected function getData()
     {
         return $this->data;
     }
@@ -95,7 +95,7 @@ class View
      * @param array
      * @return object
      */
-    public function setData($data)
+    public function data($data)
     {
         if (!is_array($data)) {
             throw new \Exception('O valor passado é inválido.');

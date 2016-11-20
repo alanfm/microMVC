@@ -63,7 +63,12 @@ final class Home extends Controller
          * 
          * Na linha parent::index() é impresso a página na tela do usuário.
          */
-        $this->getView()->setTemplate('home/index')->setData(array('title'=>'microMVC'));
+        $this->view()->template('home/index')->data(array('title'=>'microMVC'));
+
+        /**
+         * Também é possivel fazer como na linha de código abaixo 
+         * $this->view('home/index', ['title'=>'microMVC']);
+         */
         parent::index();
     }
 }
