@@ -45,8 +45,6 @@ class View
     {
         if (empty($this->template)) {
             throw new \Exception('Não foi definido o nome do template.');
-
-            return;
         }
 
         return $this->template;
@@ -64,8 +62,6 @@ class View
     {
         if (!is_string($template)) {
             throw new \Exception('Nome do template inserido é inválido.');
-
-            return;
         }
 
         $this->template = VIEW_DIR . $template . '.php';
@@ -99,8 +95,6 @@ class View
     {
         if (!is_array($data)) {
             throw new \Exception('O valor passado é inválido.');
-
-            return;
         }
 
         $this->data = $data;
@@ -118,9 +112,7 @@ class View
     public function show()
     {
         if (!file_exists($this->getTemplate())) {
-            throw new \Exception('O arquivo do template não existe.');
-
-            return;            
+            throw new \Exception('O arquivo do template não existe.');       
         }
 
         if (count($this->getData()) > 0) {

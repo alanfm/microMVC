@@ -99,9 +99,7 @@ class Controller
     public function outputJSON(array $data)
     {
         if (!is_array($data)) {
-            throw new \Exception("Parametro inválido. Atribua um vetor como parametro.");
-
-            return;            
+            throw new \Exception("Parametro inválido. Atribua um vetor como parametro.");         
         }
 
         header('Content-Type: application/json');

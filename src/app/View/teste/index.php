@@ -33,21 +33,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>Você está na página inicial.</p>
+                    <?=$data;?>
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Copyright GPL &copy; 2016<br>
-                            Desenvolvido por <strong>Alan Freire</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </body>
 </html>

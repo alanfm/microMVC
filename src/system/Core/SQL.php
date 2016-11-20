@@ -60,15 +60,11 @@ class SQL
     public function insert($table, $fields)
     {
         if (!is_array($fields)) {
-            throw new \Exception("Parametro campos inválido.");
-
-            return;            
+            throw new \Exception("Parametro campos inválido.");          
         }
 
         if (!is_string($table)) {
             throw new \Exception(sprintf("Parametro tabela(%s) inválido.", $table));
-
-            return;
         }
 
         $this->string = sprintf('INSERT INTO %s (%s) VALUES (%s)',
@@ -92,8 +88,6 @@ class SQL
     {
         if (!is_string($table)) {
             throw new \Exception('Parametro tabela inválido.');
-
-            return;
         }
 
         $this->string = sprintf('DELETE FROM %s', $table);
@@ -117,14 +111,10 @@ class SQL
     {
         if (!is_string($table)) {
             throw new \Exception('Parametro tabela inválido.');
-
-            return;
         }
 
         if (!is_array($fields)) {
             throw new \Exception('Parametro campos inválido.');
-            
-            return;
         }
 
         $this->string = sprintf('UPDATE %s SET %s',
@@ -149,15 +139,11 @@ class SQL
     public function select($table, $fields = ['*'])
     {
         if (!is_string($table)) {
-            throw new \Exception('Parametro tabela inválido.');
-
-            return;            
+            throw new \Exception('Parametro tabela inválido.');    
         }
 
         if (!is_array($fields)) {
             throw new \Exception('Parametro campos inválido.');
-
-            return;
         }
 
         $this->string = sprintf('SELECT %s FROM %s',
@@ -183,9 +169,7 @@ class SQL
     public function where($fields, $cond = 'AND')
     {
         if (!is_array($fields)) {
-            throw new \Exception('Parametro campos inválido.');
-
-            return;            
+            throw new \Exception('Parametro campos inválido.');     
         }
 
         $str = array();
@@ -226,14 +210,10 @@ class SQL
     {
         if (!is_string($field)) {
             throw new \Exception('Parametro campo inválido.');
-            
-            return;
         }
 
         if (!is_string($order) || !in_array(strtoupper($order), ['ASC', 'DESC'])) {
             throw new \Exception('Parametro ordem inválido. (Valores válido: ASC ou DESC)');
-            
-            return;
         }
 
         $this->string .= sprintf(' ORDER BY %s%s', $field, ($order? ' ' . strtoupper($order): ''));
@@ -256,8 +236,6 @@ class SQL
     {
         if (!is_integer($number)) {
             throw new \Exception('Parametro número inválido.');
-            
-            return;
         }
 
         $this->string .= sprintf(' LIMIT %d', $number);
@@ -278,8 +256,6 @@ class SQL
     {
         if (!is_integer($number)) {
             throw new \Exception('Parametro número inválido.');
-            
-            return;
         }
 
         $this->string .= sprintf(' OFFSET %d', $number);

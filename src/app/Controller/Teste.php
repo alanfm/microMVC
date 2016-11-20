@@ -8,76 +8,96 @@ final class Teste extends Controller
 {
     public function index()
     {
-        echo '<h1>MicroMVC</h1>';
-        echo '<h3>Exemplo de uma pequena aplicação com microframework.</h3>';
-        echo '<hr>';
+        $this->view('teste/index', ['data'=>'Página inicial de teste!', 'title'=>'Página de teste!']);
+        parent::index();
     }
 
     public function insertInDB()
     {
-        $this->index();
         if ($this->model('Teste')->insert(['id'=>null, 'name'=>'Test', 'last_name'=>'Test'])->save()) {
-        	echo 'Salvo!';
+            $data = 'Registro salvo com sucesso!';
         } else {
-        	echo 'Erro!';
+            $data = 'Erro ao registrar os dados!';
         }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 
     public function deleteInDB($id)
     {
-        $this->index();
-    	if ($this->model('Teste')->delete(['id'=>$id[0]])->save()) {
-    		echo 'Apagado!';
-    	} else {
-    		echo 'Erro!';
-    	}
+        if ($this->model('Teste')->delete(['id'=>$id[0]])->save()) {
+            $data = 'Registro apagado com sucesso!';
+        } else {
+            $data = 'Erro ao apagar osdados';
+        }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 
-    public function updateInDB($id)
+    public function updateInDB($id, $name = 'Teste', $last_name = 'Test')
     {
-        $this->index();
-    	if ($this->model('Teste')->update(['name'=>'Test', 'last_name'=>'Test'], ['id'=>$id[0]])->save()) {
-    		echo 'Alterado!';
-    	} else {
-    		echo 'Erro!';
-    	}
+        if ($this->model('Teste')->update(['name'=>$name, 'last_name'=>$last_name], ['id'=>$id])->save()) {
+            $data = 'Registro alterado com sucesso!';
+        } else {
+            $data = 'Erro ao alterar o registro';
+        }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 
     public function select1InDB()
     {
-        $this->index();
-    	$rows = $this->model('Teste')->select()->save();
+        $rows = $this->model('Teste')->select()->save();
 
-    	if (count($rows)) {
-    		var_dump($rows);
-    	} else {
-    		echo 'Erro!';
-    	}
+        if (count($rows)) {
+            ob_start();
+            var_dump($rows);
+            $data = ob_get_contents();
+            ob_end_clean();
+        } else {
+            $data = 'Erro ao fazer um select na tabela';
+        }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 
     public function select2InDB($id)
     {
-        $this->index();
-    	$rows = $this->model('Teste')->select(['*'], ['id'=>$id])->save();
+        $rows = $this->model('Teste')->select(['*'], ['id'=>$id])->save();
 
-    	if (count($rows)) {
-    		var_dump($rows);
-    	} else {
-    		echo 'Erro!';
-    	}
+        if (count($rows)) {
+            ob_start();
+            var_dump($rows);
+            $data = ob_get_contents();
+            ob_end_clean();
+        } else {
+            $data = 'Erro ao fazer um select na tabela';
+        }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 
     public function select3InDB($field)
     {
-        $this->index();
         $field = filter_var($field, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        
+
         $rows = $this->model('Teste')->select(['*'], ['name'=>["%$field%", 'LIKE']])->save();
 
         if (count($rows)) {
+            ob_start();
             var_dump($rows);
+            $data = ob_get_contents();
+            ob_end_clean();
         } else {
-            echo 'Erro!';
+            $data = 'Erro ao fazer um select na tabela';
         }
+
+        $this->view('teste/index', ['data'=>$data, 'title'=>'Página de teste!']);
+        parent::index();
     }
 }

@@ -3,7 +3,14 @@
 /**
  * Carregamento automatico das classes
  */
-require_once __DIR__ . '/vendor/autoload.php';
+$autoload = __DIR__ . '/vendor/autoload.php';
+
+if (!file_exists($autoload)) {
+    echo "Você precisa executar <strong>composer install</strong>!";
+    exit;
+}
+
+require_once $autoload;
 
 /**
  * Configuração das sessões
@@ -15,9 +22,9 @@ session_start();
 /**
  * Arquivos de configuração
  */
-include_once __DIR__ . '/src/app/config.php';
+require_once __DIR__ . '/src/app/config.php';
 
 /**
  * Rotas do sistema
  */
-include_once __DIR__ . '/src/app/router.php';
+require_once __DIR__ . '/src/app/router.php';
