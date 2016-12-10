@@ -116,6 +116,6 @@ class SQLTest extends \PHPUnit_Framework_TestCase
     {
         $this->sql->select('tabela')->where(['name' => ['test', 'LIKE']]);
 
-        $this->assertEquals('SELECT * FROM tabela WHERE name LIKE ?', $this->sql->get());
+        $this->assertEquals('SELECT * FROM tabela WHERE (name LIKE ?)', $this->sql->get());
     }
 }
