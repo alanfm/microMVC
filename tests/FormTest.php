@@ -45,6 +45,13 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('<input id="name" name="name" type="text">', $this->form->getFieldInput('name'));
     }
 
+    public function testGetField()
+    {
+        $this->form->addField('Name', 'text');
+
+        $this->assertEquals('<div><label for="name">Name: </label><input id="name" name="name" type="text"></div>', $this->form->getField('name'));
+    }
+
     public function testBuidForm()
     {
         $this->form->addField('Name', 'text');
